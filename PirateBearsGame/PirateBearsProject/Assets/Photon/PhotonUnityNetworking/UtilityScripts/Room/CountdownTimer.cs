@@ -63,14 +63,14 @@ namespace Photon.Pun.UtilityScripts
             if (this.Text == null) Debug.LogError("Reference to 'Text' is not set. Please set a valid reference.", this);
         }
 
-        //public override void OnEnable()
-        //{
-        //    Debug.Log("OnEnable CountdownTimer");
-        //    base.OnEnable();
+        public override void OnEnable()
+        {
+            Debug.Log("OnEnable CountdownTimer");
+            base.OnEnable();
 
-        //    // the starttime may already be in the props. look it up.
-        //    Initialize();
-        //}
+            // the starttime may already be in the props. look it up.
+            Initialize();
+        }
 
         public override void OnDisable()
         {

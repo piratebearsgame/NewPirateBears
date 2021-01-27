@@ -17,7 +17,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public InputField roomName;
     string playerNameTemp;
 
-
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();

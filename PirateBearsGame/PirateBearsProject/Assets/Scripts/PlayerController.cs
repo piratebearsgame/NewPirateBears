@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     public float TimeToLive = 4f;
     float angle;
 
-    public Text gameOverTxt;
+    bool canShoot = false;
+
+    public float coolDown = 5.0f;
 
     public int _bearCount = 0;
 
@@ -31,6 +33,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
     public GameObject gameManager;
 
+    [Header("Change Color Sprite")]
+    public float _colorAmout = 255;
+    SpriteRenderer rend;
+    Color m_NewColor = new Color(255, 255, 255, 255);
+
     // Use this for initialization
     void Start()
     {
@@ -41,11 +48,23 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         HealthManager(playerHealthMax);
 
         gameManager = GameObject.FindWithTag("GameManager");
+
+        rend = GetComponent<SpriteRenderer>();
+        _colorAmout = 255;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //if ((Input.GetKey(KeyCode.L)))
+        //{
+        //    _colorAmout -= 50f;
+        //    m_NewColor = new Color(255, _colorAmout, _colorAmout, 255);
+        //rend.color = m_NewColor;
+        //}
+
+       
+        //rend.material.color = m_NewColor;
 
         if (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D)))
         {
@@ -62,34 +81,34 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         {
 
 
-            if (transform.position.x < -6.0f)
-            {
-                _playerPos.x = -6.0f;
-            }
-            else if (transform.position.x > 6.0f)
-            {
-                _playerPos.x = 6.0f;
-            }
-            else if (transform.position.y > 2f)
-            {
-                _playerPos.y = 2.0f;
-            }
-            else if (transform.position.y < -2f)
-            {
-                _playerPos.y = -2.0f;
-            }
-            else
-            {                
-                _playerPos.x += (Mathf.Cos(angle) * _playerSpeed) * Time.deltaTime;
-                _playerPos.y += (Mathf.Sin(angle) * _playerSpeed) * Time.deltaTime;
-            }
+            //if (transform.position.x < -6.0f)
+            //{
+            //    _playerPos.x = -6.0f;
+            //}
+            //else if (transform.position.x > 6.0f)
+            //{
+            //    _playerPos.x = 6.0f;
+            //}
+            //else if (transform.position.y > 2f)
+            //{
+            //    _playerPos.y = 2.0f;
+            //}
+            //else if (transform.position.y < -2f)
+            //{
+            //    _playerPos.y = -2.0f;
+            //}
+            //else
+            //{
+            _playerPos.x += (Mathf.Cos(angle) * _playerSpeed) * Time.deltaTime;
+            _playerPos.y += (Mathf.Sin(angle) * _playerSpeed) * Time.deltaTime;
+            //}
 
 
         }
 
 
 
-        shooting();        
+        shooting();
 
         //if (Input.GetKey(KeyCode.DownArrow) ||
         //   (Input.GetKey(KeyCode.W)) && (Input.GetKey(KeyCode.LeftShift)))
@@ -102,6 +121,13 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         //print("x: " + transform.position.x);
         //print("y: " + transform.position.y);
+        if (playerHealthCurrent <= 0)
+        {
+            gameManager.GetComponent<GameControllerGamePlay>().GameOver();
+        }
+
+        
+
     }
 
     void IPunObservable.OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -122,8 +148,10 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     {
         //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
         if (col.gameObject.tag == "Bear")
-        {                
-                Destroy(col.gameObject);
+        {
+            _bearCount += 1;
+
+            Destroy(col.gameObject);
         }
         //if (col.gameObject.tag == "Kraken")
         //{
@@ -135,9 +163,9 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //}
     }
 
-    
 
-   
+
+
 
     [PunRPC]
     void shooting()
@@ -146,11 +174,30 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //{
         //    photonView.RPC("FireBullet", RpcTarget.All);        
         //} 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _bearCount >= 0 && canShoot == false)
         {
             PhotonNetwork.Instantiate(bullet.name, barrelTip.transform.position, barrelTip.transform.rotation, 0);
+            _bearCount -= 1;
+            canShoot = true;
+            StartCoroutine(ExampleCoroutine());
         }
+        
     }
+
+    IEnumerator ExampleCoroutine()
+    {
+        ////Print the time of when the function is first called.
+        //Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(3);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        canShoot = false;
+    }
+
+
 
     [PunRPC]
     private void FireBullet()
@@ -160,10 +207,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     }
 
     public void TakeDamage(float value/*, Player playerTemp*/)
-    {       
+    {
 
         photonView.RPC("TakeDamageNetwork", RpcTarget.AllBuffered, value/*, playerTemp*/);
 
+        
         //foreach (var item in PhotonNetwork.PlayerList)
         //{
         //    object playerScoreTempGet;
@@ -199,14 +247,14 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     [PunRPC]
     void IsGameOver()
     {
-        if (photonView.Owner.IsMasterClient)
-        {
-            Debug.Log("GameOver");
-            //print("Player ID: " + GetComponent<Collider>().GetComponent<PhotonView>().Owner.ActorNumber + "player.name" + GetComponent<Collider>().GetComponent<PhotonView>().Owner.NickName);
-            
-        
+        //if (photonView.Owner.IsMasterClient)
+        //{
+        //    Debug.Log("GameOver");
+        //    //print("Player ID: " + GetComponent<Collider>().GetComponent<PhotonView>().Owner.ActorNumber + "player.name" + GetComponent<Collider>().GetComponent<PhotonView>().Owner.NickName);
 
-        }
+
+
+        //}
     }
 
     public void HealthManager(float value)

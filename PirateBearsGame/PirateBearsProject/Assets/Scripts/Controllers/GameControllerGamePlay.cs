@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 using Photon.Pun.UtilityScripts;
 
@@ -10,11 +11,18 @@ using System.Linq;
 
 using UnityEngine.SceneManagement;
 
-public class GameControllerGamePlay : MonoBehaviourPunCallbacks {
+public class GameControllerGamePlay : MonoBehaviourPunCallbacks
+{
 
-    
+    public Text pointsTxt;
+
+    int j = 0;
+
     public GameObject myPlayer;
+    public GameObject myKraken;
+
     public Transform[] spawnPlayer;
+    public Transform[] spawnKraken;
 
     public GameObject canvasCountdow;
 
@@ -29,9 +37,12 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks {
         isGameOver = false;
 
         int i = Random.Range(0, spawnPlayer.Length);
+        j = Random.Range(0, spawnKraken.Length);
 
         GameObject playerTemp = PhotonNetwork.Instantiate(myPlayer.name, spawnPlayer[i].position, spawnPlayer[i].rotation, 0) as GameObject;
 
+        GameObject krakenTemp = PhotonNetwork.Instantiate(myKraken.name, spawnKraken[j].position, spawnKraken[j].rotation, 0) as GameObject;
+        
 
         //Iniciando CountdownEndGame
         
@@ -56,7 +67,13 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks {
 
     }
 
-    void CheckPlayers() {
+    public void Update()
+    {
+        pointsTxt.text = myPlayer.GetComponent<PlayerController>()._bearCount.ToString();
+    }
+
+    void CheckPlayers()
+    {
 
         if (PhotonNetwork.PlayerList.Length < 2)
         {
@@ -133,11 +150,15 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks {
 
     }
 
+    public override void OnJoinedRoom()
+    {
 
+    }
 
-    //Botão Sair do Jogo
+        //Botão Sair do Jogo
 
-    public void BotaoDesconectar() {
+        public void BotaoDesconectar()
+    {
         
         PhotonNetwork.LeaveRoom();
         
@@ -145,7 +166,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks {
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Main");
     }
 
 

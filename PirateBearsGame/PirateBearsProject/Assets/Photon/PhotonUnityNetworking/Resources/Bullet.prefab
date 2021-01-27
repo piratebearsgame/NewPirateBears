@@ -140,7 +140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 3477861643745802213, guid: 45a161b92b5a72142bd54f51312fc5b9,
     type: 3}
-  playerObj: {fileID: 0}
+  playerObj: {fileID: 4982577218634265721, guid: 9d3eacd1bfdb61d49a7b29267d452fc7,
+    type: 3}
   impact: {fileID: 0}
 --- !u!61 &8588216711281797051
 BoxCollider2D:
