@@ -78,6 +78,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+
+        }
+
         //print("Joined");        
 
         //spawn kraken

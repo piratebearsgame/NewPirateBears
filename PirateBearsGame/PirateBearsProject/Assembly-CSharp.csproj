@@ -305,6 +305,7 @@
     <Compile Include="Assets\Scripts\Controllers\CountdownEndGame.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameControllerGamePlay.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\KrakenSpawn.cs" />
     <Compile Include="Assets\Scripts\Login\Lobby.cs" />
     <Compile Include="Assets\Scripts\Login\NetworkController.cs" />
     <Compile Include="Assets\Scripts\NetworkManager.cs" />

@@ -653,7 +653,7 @@ RectTransform:
   - {fileID: 824774422}
   - {fileID: 33127063}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1633,41 +1633,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 80370742}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &92411385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 92411386}
-  m_Layer: 0
-  m_Name: SpawnKraken
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &92411386
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 92411385}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1115751131}
-  - {fileID: 345828027}
-  - {fileID: 940057495}
-  - {fileID: 201732766}
-  - {fileID: 1521183245}
-  m_Father: {fileID: 973734077}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96805316
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,7 +3232,7 @@ GameObject:
   - component: {fileID: 201732766}
   m_Layer: 0
   m_Name: spawn_3
-  m_TagString: Untagged
+  m_TagString: KrakenSpawn
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3279,12 +3244,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201732765}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.16, y: -5.37, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.16, y: -4.06, z: -1.6955595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 92411386}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204635182
 GameObject:
@@ -5012,7 +4977,7 @@ GameObject:
   - component: {fileID: 345828027}
   m_Layer: 0
   m_Name: spawn _1
-  m_TagString: Untagged
+  m_TagString: KrakenSpawn
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5024,12 +4989,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345828026}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.29, y: 2.62, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.29, y: 3.9299998, z: -1.6955595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 92411386}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357078963
 GameObject:
@@ -6476,7 +6441,7 @@ RectTransform:
   - {fileID: 2127633504}
   - {fileID: 1049778322}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13439,7 +13404,7 @@ GameObject:
   - component: {fileID: 940057495}
   m_Layer: 0
   m_Name: spawn _2
-  m_TagString: Untagged
+  m_TagString: KrakenSpawn
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13451,12 +13416,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 940057494}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.22, y: -5.97, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.22, y: -4.66, z: -1.6955595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 92411386}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &942300024
 GameObject:
@@ -14316,6 +14281,7 @@ GameObject:
   - component: {fileID: 973734078}
   - component: {fileID: 973734076}
   - component: {fileID: 973734080}
+  - component: {fileID: 973734079}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: GameManager
@@ -14349,7 +14315,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1243781542}
-  - {fileID: 92411386}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14386,6 +14351,26 @@ MonoBehaviour:
   canvasGameOver: {fileID: 26777737}
   canvasGameOverFinish: {fileID: 0}
   canvasGameOverPlayScore: {fileID: 0}
+--- !u!114 &973734079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973734075}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0744a4c002eab3844872b8ce5c9dda11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Kraken: {fileID: 5541227830742462404, guid: 08b09c89a8ac97642bd4426eb74f4a43, type: 3}
+  spawnsKraken:
+  - {fileID: 1115751131}
+  - {fileID: 345828027}
+  - {fileID: 940057495}
+  - {fileID: 201732766}
+  - {fileID: 1521183245}
+  canSpawnKrekanAppear: 0
 --- !u!114 &973734080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14393,12 +14378,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973734075}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09ed4f49c3e2b8744a5b9fc8d5ceffbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints: []
+  canSpawnBears: 0
 --- !u!1 &979443248
 GameObject:
   m_ObjectHideFlags: 0
@@ -14491,7 +14477,7 @@ RectTransform:
   m_Children:
   - {fileID: 1313602278}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16452,7 +16438,7 @@ GameObject:
   - component: {fileID: 1115751131}
   m_Layer: 0
   m_Name: spawn_0
-  m_TagString: Untagged
+  m_TagString: KrakenSpawn
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16464,12 +16450,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115751130}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 1.95, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11, y: 3.26, z: -1.6955595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 92411386}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120952485
 GameObject:
@@ -16838,7 +16824,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1129470786
 GameObject:
@@ -21858,7 +21844,7 @@ Transform:
   m_LocalScale: {x: 7.130378, y: 0.84118223, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1413570535
 Rigidbody2D:
@@ -23691,7 +23677,7 @@ GameObject:
   - component: {fileID: 1521183245}
   m_Layer: 0
   m_Name: spawn_4
-  m_TagString: Untagged
+  m_TagString: KrakenSpawn
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23703,12 +23689,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521183244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.07, y: -1.18, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.07, y: 0.13, z: -1.6955595}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 92411386}
-  m_RootOrder: 4
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1531373686
 PrefabInstance:

@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - Bullet
     - CountdownEndGame
     - GameControllerGamePlay
+    - KrakenSpawn
     - Lobby
     - NetworkController
     - NetworkManager
@@ -158,6 +159,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 15024}
     - Class: 114
       Script: {instanceID: 15180}
+    - Class: 114
+      Script: {instanceID: 90568}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1186,7 +1189,7 @@ ScriptsOnlyBuild:
     className: CloudRegionProperty
   - hash:
       serializedVersion: 2
-      Hash: af8a4215716635f7a5d0374794d85f4a
+      Hash: ef06047619c569981be26d42428a326e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1420,7 +1423,7 @@ ScriptsOnlyBuild:
     className: ToggleExpand
   - hash:
       serializedVersion: 2
-      Hash: 7cd917339e3af72e0cb1a28050d439cf
+      Hash: 7a502e6fb781afca38d566aac7cc2c72
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpawnBears
@@ -2132,6 +2135,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: b5b79c057155d1b1e094e53d39a26922
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: KrakenSpawn
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main.unity

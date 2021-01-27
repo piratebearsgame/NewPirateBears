@@ -19,7 +19,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     int j = 0;
 
     public GameObject myPlayer;
-    public GameObject myKraken;
+    public GameObject myKraken;    
 
     public Transform[] spawnPlayer;
     public Transform[] spawnKraken;
@@ -37,25 +37,30 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         isGameOver = false;
 
         int i = Random.Range(0, spawnPlayer.Length);
-        j = Random.Range(0, spawnKraken.Length);
+
+        this.GetComponent<SpawnBears>().enabled = false;
+        this.GetComponent<KrakenSpawn>().enabled = false;
+
 
         GameObject playerTemp = PhotonNetwork.Instantiate(myPlayer.name, spawnPlayer[i].position, spawnPlayer[i].rotation, 0) as GameObject;
 
-        GameObject krakenTemp = PhotonNetwork.Instantiate(myKraken.name, spawnKraken[j].position, spawnKraken[j].rotation, 0) as GameObject;
         
+
+        SpawnItensMaster();
+
 
         //Iniciando CountdownEndGame
-        
-                //if(playerTemp.GetComponent<PhotonView>().Owner.IsMasterClient)
-                //{
 
-                //    ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable {
-                //        {CountdownEndGame.CountdownStartTime, (float) PhotonNetwork.Time }
-                //    };
+        //if(playerTemp.GetComponent<PhotonView>().Owner.IsMasterClient)
+        //{
 
-                //    PhotonNetwork.CurrentRoom.SetCustomProperties(props);
-            
-                //}
+        //    ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable {
+        //        {CountdownEndGame.CountdownStartTime, (float) PhotonNetwork.Time }
+        //    };
+
+        //    PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
+        //}
 
         CheckPlayers();
 
@@ -85,6 +90,28 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
             //}
         }
 
+    }
+
+    void SpawnItensMaster()
+    {
+        foreach (var item in PhotonNetwork.PlayerList)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                this.GetComponent<SpawnBears>().enabled = true;
+                this.GetComponent<KrakenSpawn>().enabled = true;
+
+                //j = Random.Range(0, spawnKraken.Length);
+                //GameObject krakenTemp = PhotonNetwork.Instantiate(myKraken.name, 
+                //    spawnKraken[j].position, spawnKraken[j].rotation, 0) as GameObject;
+
+                print("aqui");
+            }
+            //else
+            //{
+            //    this.GetComponent<SpawnBears>().enabled = false;
+            //}
+        }
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
