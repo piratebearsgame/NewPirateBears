@@ -54,16 +54,9 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         rend = GetComponent<SpriteRenderer>();
         _colorAmout = 255;
 
-        team = (int)PhotonNetwork.LocalPlayer.CustomProperties["Team"];
+        //team = (int)PhotonNetwork.LocalPlayer.CustomProperties["Team"];
 
-        //if (team == 0)
-        //{
-
-        //}
-        //else
-        //{
-
-        //}
+        
     }
 
     // Update is called once per frame
@@ -161,7 +154,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         if (col.gameObject.tag == "Bear")
         {
             photonView.RPC("RPC_PlayerCatch", RpcTarget.All, team);
-            //_bearCount += 1;
+            _bearCount += 1;
 
             Destroy(col.gameObject);
 

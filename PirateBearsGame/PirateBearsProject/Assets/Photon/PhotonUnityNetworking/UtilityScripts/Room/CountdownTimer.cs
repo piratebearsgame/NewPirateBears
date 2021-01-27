@@ -69,7 +69,7 @@ namespace Photon.Pun.UtilityScripts
             base.OnEnable();
 
             // the starttime may already be in the props. look it up.
-            Initialize();
+            //Initialize();
         }
 
         public override void OnDisable()
@@ -113,27 +113,27 @@ namespace Photon.Pun.UtilityScripts
         public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
         {
             Debug.Log("CountdownTimer.OnRoomPropertiesUpdate " + propertiesThatChanged.ToStringFull());
-            Initialize();
+           //Initialize();
         }
 
 
-        private void Initialize()
-        {
-            int propStartTime;
-            if (TryGetStartTime(out propStartTime))
-            {
-                this.startTime = propStartTime;
-                Debug.Log("Initialize sets StartTime " + this.startTime + " server time now: " + PhotonNetwork.ServerTimestamp + " remain: " + TimeRemaining());
+        //private void Initialize()
+        //{
+        //    int propStartTime;
+        //    if (TryGetStartTime(out propStartTime))
+        //    {
+        //        this.startTime = propStartTime;
+        //        Debug.Log("Initialize sets StartTime " + this.startTime + " server time now: " + PhotonNetwork.ServerTimestamp + " remain: " + TimeRemaining());
 
 
-                this.isTimerRunning = TimeRemaining() > 0;
+        //        this.isTimerRunning = TimeRemaining() > 0;
 
-                if (this.isTimerRunning)
-                    OnTimerRuns();
-                else
-                    OnTimerEnds();
-            }
-        }
+        //        if (this.isTimerRunning)
+        //            OnTimerRuns();
+        //        else
+        //            OnTimerEnds();
+        //    }
+        //}
 
 
         private float TimeRemaining()
@@ -143,34 +143,34 @@ namespace Photon.Pun.UtilityScripts
         }
 
 
-        public static bool TryGetStartTime(out int startTimestamp)
-        {
-            startTimestamp = PhotonNetwork.ServerTimestamp;
+        //public static bool TryGetStartTime(out int startTimestamp)
+        //{
+        //    startTimestamp = PhotonNetwork.ServerTimestamp;
 
-            object startTimeFromProps;
-            if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue(CountdownStartTime, out startTimeFromProps))
-            {
-                startTimestamp = (int)startTimeFromProps;
-                return true;
-            }
+        //    object startTimeFromProps;
+        //    if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue(CountdownStartTime, out startTimeFromProps))
+        //    {
+        //        startTimestamp = (int)startTimeFromProps;
+        //        return true;
+        //    }
 
-            return false;
-        }
-
-
-        public static void SetStartTime()
-        {
-            int startTime = 0;
-            bool wasSet = TryGetStartTime(out startTime);
-
-            Hashtable props = new Hashtable
-            {
-                {CountdownTimer.CountdownStartTime, (int)PhotonNetwork.ServerTimestamp}
-            };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+        //    return false;
+        //}
 
 
-            Debug.Log("Set Custom Props for Time: "+ props.ToStringFull() + " wasSet: "+wasSet);
-        }
+        //public static void SetStartTime()
+        //{
+        //    int startTime = 0;
+        //    bool wasSet = TryGetStartTime(out startTime);
+
+        //    Hashtable props = new Hashtable
+        //    {
+        //        {CountdownTimer.CountdownStartTime, (int)PhotonNetwork.ServerTimestamp}
+        //    };
+        //    PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
+
+        //    Debug.Log("Set Custom Props for Time: "+ props.ToStringFull() + " wasSet: "+wasSet);
+        //}
     }
 }

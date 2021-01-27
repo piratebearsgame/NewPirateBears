@@ -22,10 +22,11 @@ public class KrakenSpawn : MonoBehaviour
 
     public bool appeared = false;
 
+    public GameObject krakenInfos;
 
     void Start()
     {
-
+        krakenInfos.SetActive(false);
         StartCoroutine(Appear());
         
     }
@@ -39,6 +40,7 @@ public class KrakenSpawn : MonoBehaviour
             int j = Random.Range(0, spawnsKraken.Length);
             krakenTemp.gameObject.transform.position = new Vector2(spawnsKraken[j].position.x, spawnsKraken[j].position.y);
             appeared = false;
+            
         }
     }
 
@@ -65,6 +67,7 @@ public class KrakenSpawn : MonoBehaviour
         this.gameObject.GetComponent<GameControllerGamePlay>().spawnKraken[this.gameObject.GetComponent<GameControllerGamePlay>().j].position, 
         this.gameObject.GetComponent<GameControllerGamePlay>().spawnKraken[this.gameObject.GetComponent<GameControllerGamePlay>().j].rotation, 0)
         as GameObject;
+        krakenInfos.SetActive(true);
 
         //appeared = true;
     }

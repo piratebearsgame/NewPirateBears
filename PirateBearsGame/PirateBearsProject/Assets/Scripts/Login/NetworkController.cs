@@ -223,6 +223,7 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
             PhotonNetwork.SetPlayerCustomProperties(playerProps);
         }
+        print("Team: " + PhotonNetwork.LocalPlayer.CustomProperties["Team"]);
     }
     //PhotonNetwork.jo
     }

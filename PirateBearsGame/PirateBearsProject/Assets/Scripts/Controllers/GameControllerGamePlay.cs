@@ -32,6 +32,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public GameObject canvasGameOverFinish;
     public GameObject canvasGameOverPlayScore;
 
+    
+
     public static GameControllerGamePlay instance;
     public static int blueScore = 0;
     public static int redScore = 0;
