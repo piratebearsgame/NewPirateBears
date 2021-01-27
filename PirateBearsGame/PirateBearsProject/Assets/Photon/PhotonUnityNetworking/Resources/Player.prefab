@@ -400,6 +400,7 @@ MonoBehaviour:
   _playerSpeed: 3
   _playerRotSpeed: 3
   TimeToLive: 4
+  team: 0
   coolDown: 5
   _bearCount: 0
   barrelTip: {fileID: 8815210231451116845}

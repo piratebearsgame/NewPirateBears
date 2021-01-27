@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     public float TimeToLive = 4f;
     float angle;
 
+    public int team;
+
     bool canShoot = false;
 
     public float coolDown = 5.0f;
@@ -51,6 +53,17 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         rend = GetComponent<SpriteRenderer>();
         _colorAmout = 255;
+
+        team = (int)PhotonNetwork.LocalPlayer.CustomProperties["Team"];
+
+        //if (team == 0)
+        //{
+
+        //}
+        //else
+        //{
+
+        //}
     }
 
     // Update is called once per frame
@@ -106,8 +119,6 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         }
 
-
-
         shooting();
 
         //if (Input.GetKey(KeyCode.DownArrow) ||
@@ -149,7 +160,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
         if (col.gameObject.tag == "Bear")
         {
-            _bearCount += 1;
+            photonView.RPC("RPC_PlayerCatch", RpcTarget.All, team);
+            //_bearCount += 1;
 
             Destroy(col.gameObject);
 
@@ -157,12 +169,23 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         }
         if (col.gameObject.tag == "Kraken")
         {
-
+            
             _bearCount = 0;
         }
     }
 
-
+    [PunRPC]
+    void RPC_PlayerCatch(int team)
+    {
+        if (team == 0)
+        {
+            GameControllerGamePlay.redScore++;
+        }
+        else
+        {
+            GameControllerGamePlay.blueScore++;
+        }
+    }
 
 
 
@@ -260,5 +283,5 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     {
         playerHealthCurrent += value;
         playerHealthFill.fillAmount = playerHealthCurrent / 100f;
-    }
+    }    
 }

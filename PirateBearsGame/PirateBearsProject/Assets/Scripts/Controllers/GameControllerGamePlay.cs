@@ -18,6 +18,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public int j;
 
+    public int team;
+
     public GameObject myPlayer;
     public GameObject myKraken;    
 
@@ -30,7 +32,23 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public GameObject canvasGameOverFinish;
     public GameObject canvasGameOverPlayScore;
 
+    public static GameControllerGamePlay instance;
+    public static int blueScore = 0;
+    public static int redScore = 0;
+
     bool isGameOver = false;
+
+    public Text blueScoreText;
+    public Text redScoreText;
+
+    private void Awake()
+    {
+        SetScoreText();
+        instance = this;
+    }
+
+    
+
 
     private void Start()
     {
@@ -74,7 +92,9 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public void Update()
     {
-        pointsTxt.text = myPlayer.GetComponent<PlayerController>()._bearCount.ToString();
+        //pointsTxt.text = myPlayer.GetComponent<PlayerController>()._bearCount.ToString();
+
+        SetScoreText();
     }
 
     void CheckPlayers()
@@ -97,7 +117,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         foreach (var item in PhotonNetwork.PlayerList)
         {
             if (PhotonNetwork.IsMasterClient)
-            {
+            {                
                 this.GetComponent<SpawnBears>().enabled = true;
                 this.GetComponent<KrakenSpawn>().enabled = true;
 
@@ -105,13 +125,21 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
                 //GameObject krakenTemp = PhotonNetwork.Instantiate(myKraken.name, 
                 //    spawnKraken[j].position, spawnKraken[j].rotation, 0) as GameObject;
 
-                print("aqui");
-            }
+                
+            }            
             //else
             //{
             //    this.GetComponent<SpawnBears>().enabled = false;
             //}
         }
+    }
+
+    public void SetScoreText()
+    {
+        redScoreText.text = redScore.ToString();
+        blueScoreText.text = redScore.ToString();
+
+
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

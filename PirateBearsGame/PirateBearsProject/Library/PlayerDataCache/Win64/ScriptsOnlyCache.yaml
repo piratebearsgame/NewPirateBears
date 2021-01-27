@@ -1195,7 +1195,7 @@ ScriptsOnlyBuild:
     className: CloudRegionProperty
   - hash:
       serializedVersion: 2
-      Hash: ef06047619c569981be26d42428a326e
+      Hash: f97ad0ba6d3811f71db4b8da1eddd857
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1339,7 +1339,7 @@ ScriptsOnlyBuild:
     className: OnClickDestroy
   - hash:
       serializedVersion: 2
-      Hash: 87fbea43c8a1f006020c49edcd2883c4
+      Hash: 707557ef7b8712b1517f34e2336ea086
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NetworkController
@@ -1525,7 +1525,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: 58e00c02ec0330c7a3873660aff2c4a0
+      Hash: 107c8d2e96aef981568f1a6b9a831412
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControllerGamePlay

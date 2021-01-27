@@ -17,6 +17,8 @@ public class NetworkController : MonoBehaviourPunCallbacks
 
     public Lobby _lobbyScript;
 
+    public int team;
+
 
     public override void OnEnable()
     {
@@ -206,4 +208,21 @@ public class NetworkController : MonoBehaviourPunCallbacks
         StartGame();
     }
 
-}
+    public void JoinTeam(int team)
+    {
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsValue("Team"))
+        {
+            PhotonNetwork.LocalPlayer.CustomProperties["Team"] = team;
+        }
+        else
+        {
+            ExitGames.Client.Photon.Hashtable playerProps = new ExitGames.Client.Photon.Hashtable
+            {
+                { "Team", team}
+            };
+
+            PhotonNetwork.SetPlayerCustomProperties(playerProps);
+        }
+    }
+    //PhotonNetwork.jo
+    }

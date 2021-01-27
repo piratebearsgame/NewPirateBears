@@ -134,6 +134,11 @@ namespace Photon.Pun
             NetworkingClient.RemoveCallbackTarget(target);
         }
 
+        public static void SetPlayerCustomProperties(object playerProps)
+        {
+            throw new NotImplementedException();
+        }
+
         internal static string CallbacksToString()
         {
             var x = NetworkingClient.ConnectionCallbackTargets.Select(m => m.ToString()).ToArray();
