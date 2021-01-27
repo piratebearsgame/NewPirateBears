@@ -40,30 +40,11 @@ public class SpawnBears : MonoBehaviour
             {
                 ReFind();
             }
-        }        
-
-
-
-
+        }
     }
-
-    //public void SpawnNewBears()
-    //{
-    //    //if (spawnedBears.Count <= 0 && spawnedBears.Count <= spawnPoints.Count)
-    //    //{
-    //        for (int i = 0; i < spawnPoints.Count; i++)
-    //        {
-    //            PhotonNetwork.Instantiate("Bear", new Vector2(spawnPoints[i].gameObject.transform.position.x,
-    //                spawnPoints[i].gameObject.transform.position.y), Quaternion.identity);
-    //            //PhotonNetwork.Instantiate("Bear", new Vector2(0,0), Quaternion.identity);
-    //        }
-    //    //}
-    //}
 
     public void ReFind()
     {
-        
-
         for (int i = 0; i < spawnPoints.Count; i++)
         {
             PhotonNetwork.Instantiate("Bear", new Vector2(spawnPoints[i].gameObject.transform.position.x,

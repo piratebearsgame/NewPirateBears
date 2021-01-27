@@ -16,7 +16,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public Text pointsTxt;
 
-    int j = 0;
+    public int j;
 
     public GameObject myPlayer;
     public GameObject myKraken;    
@@ -101,7 +101,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
                 this.GetComponent<SpawnBears>().enabled = true;
                 this.GetComponent<KrakenSpawn>().enabled = true;
 
-                //j = Random.Range(0, spawnKraken.Length);
+                j = Random.Range(0, spawnKraken.Length);
                 //GameObject krakenTemp = PhotonNetwork.Instantiate(myKraken.name, 
                 //    spawnKraken[j].position, spawnKraken[j].rotation, 0) as GameObject;
 

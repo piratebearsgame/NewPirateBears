@@ -517,7 +517,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomMaxPlayersProperty
   - hash:
       serializedVersion: 2
-      Hash: b5b79c057155d1b1e094e53d39a26922
+      Hash: 376ab768504ce20ff0dc1c9bd824472b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: KrakenSpawn
@@ -1525,7 +1525,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: d5abc6ae57af6de2e997f0739902eee8
+      Hash: 58e00c02ec0330c7a3873660aff2c4a0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControllerGamePlay

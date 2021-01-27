@@ -155,14 +155,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
             gameManager.GetComponent<SpawnBears>().spawnedBears.Remove(col.gameObject);
         }
-        //if (col.gameObject.tag == "Kraken")
-        //{
-        //    if (_bearCount >= 0)
-        //    {
-        //        _bearCount -= 1;
-        //        _playerSpeed += 1f;
-        //    }
-        //}
+        if (col.gameObject.tag == "Kraken")
+        {
+
+            _bearCount = 0;
+        }
     }
 
 
