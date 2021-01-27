@@ -61,16 +61,16 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //    _colorAmout -= 50f;
         //    m_NewColor = new Color(255, _colorAmout, _colorAmout, 255);
         //rend.color = m_NewColor;
-        //}
-
-       
+        //}      
         //rend.material.color = m_NewColor;
 
-        if (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D)))
+
+
+        if (Input.GetKey(KeyCode.RightArrow) || (Input.GetKey(KeyCode.D)) && Input.GetKey(KeyCode.W))
         {
             _playerRot.z -= _playerRotSpeed;
         }
-        if (Input.GetKey(KeyCode.LeftArrow) || (Input.GetKey(KeyCode.A)))
+        if (Input.GetKey(KeyCode.LeftArrow) || (Input.GetKey(KeyCode.A)) && Input.GetKey(KeyCode.W))
         {
             _playerRot.z += _playerRotSpeed;
         }
@@ -152,6 +152,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
             _bearCount += 1;
 
             Destroy(col.gameObject);
+
+            gameManager.GetComponent<SpawnBears>().spawnedBears.Remove(col.gameObject);
         }
         //if (col.gameObject.tag == "Kraken")
         //{
@@ -193,7 +195,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         yield return new WaitForSeconds(3);
 
         //After we have waited 5 seconds print the time again.
-        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        //Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         canShoot = false;
     }
 
