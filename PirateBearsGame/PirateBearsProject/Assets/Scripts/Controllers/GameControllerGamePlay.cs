@@ -121,7 +121,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         if (krakenNum >= 2)
         {
-            GameOver();
+            GameOverKraken();
             
 
         }
@@ -160,7 +160,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
             //foreach (var item in PhotonNetwork.PlayerList) {
 
                 //Debug.Log(item.NickName + " Vencedor!");
-                GameOver();
+                GameOverKraken();
 
             //}
         }
@@ -239,8 +239,20 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         messageText.text = "";
     }
 
-    public void GameOver()
+    public void GameOverKraken()
     {
+       
+
+        canvasGameOver.gameObject.SetActive(true);        
+
+        //Propriedades da Sala
+        ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable
+        {
+                        {"isGameOver", true }
+        };
+
+        PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
         if (teamAtual == 0)
         {
             messageText.text = "Blue Team Wins";
@@ -250,53 +262,32 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
             messageText.text = "Red Team Wins";
         }
 
+        isGameOver = true;
+
+    }
+
+    public void GameOverLife()
+    {
+
+
         canvasGameOver.gameObject.SetActive(true);
 
-        
-
-        var dictionary = new Dictionary<string, int>();
-
-
-        foreach (var item in PhotonNetwork.PlayerList)
-        {
-            /*
-            GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
-
-
-            playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
-            playerScoreTemp.transform.position = Vector3.zero;
-            playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.NickName, item.GetScore().ToString());
-            */
-
-            dictionary.Add(item.NickName, item.GetScore());
-
-        }
-
-        var items = from pair in dictionary
-                    orderby pair.Value descending
-                    select pair;
-
-
-        foreach (var item in items)
-        {
-            //GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
-
-
-            //playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
-            //playerScoreTemp.transform.position = Vector3.zero;
-            // playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.Key, item.Value.ToString());
-        }
-
-        canvasCountdow.gameObject.SetActive(false);
-
         //Propriedades da Sala
-        ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable {
+        ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable
+        {
                         {"isGameOver", true }
-                    };
+        };
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
-        
+        //if (teamAtual == 0)
+        //{
+        //    messageText.text = "Blue Team Wins";
+        //}
+        //if (teamAtual == 1)
+        //{
+        //    messageText.text = "Red Team Wins";
+        //}
 
         isGameOver = true;
 

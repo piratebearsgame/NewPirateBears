@@ -67,7 +67,7 @@ using Photon.Pun;
 
                 isTimerRunning = false;
 
-            this.GetComponent<GameControllerGamePlay>().GameOver();
+            this.GetComponent<GameControllerGamePlay>().GameOverKraken();
 
             }
 

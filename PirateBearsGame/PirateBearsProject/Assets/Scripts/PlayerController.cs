@@ -283,11 +283,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         //playerTemp.SetCustomProperties(playerHashtableTemp, null, null);
 
-        //if (playerHealthCurrent <= 0 && photonView.IsMine)
-        //{
-        //    photonView.RPC("IsGameOver", RpcTarget.MasterClient);
-        //    gameManager.GetComponent<GameControllerGamePlay>().GameOver();
-        //}
+        if (playerHealthCurrent <= 0)
+        {
+            //photonView.RPC("IsGameOver", RpcTarget.MasterClient);
+            gameManager.GetComponent<GameControllerGamePlay>().GameOverLife();
+        }
     }
 
     [PunRPC]
