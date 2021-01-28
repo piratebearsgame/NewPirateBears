@@ -18,10 +18,12 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public int j;
 
+    public int pontosVencedor = 0;
+
     public int team;
 
     public GameObject myPlayer;
-    public GameObject myKraken;    
+    public GameObject myKraken;
 
     public Transform[] spawnPlayer;
     public Transform[] spawnKraken;
@@ -30,9 +32,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public GameObject canvasGameOver;
     public GameObject canvasGameOverFinish;
-    public GameObject canvasGameOverPlayScore;
-
-    
+    public GameObject canvasGameOverPlayScore;    
 
     public static GameControllerGamePlay instance;
     public static int blueScore = 0;
@@ -62,7 +62,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         this.GetComponent<KrakenSpawn>().enabled = false;
 
 
-        GameObject playerTemp = PhotonNetwork.Instantiate(myPlayer.name, spawnPlayer[i].position, spawnPlayer[i].rotation, 0) as GameObject;
+        GameObject playerTemp = PhotonNetwork.Instantiate(myPlayer.name, spawnPlayer[i].position, spawnPlayer[i].rotation) as GameObject;
 
         
 
@@ -96,6 +96,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     {
         //pointsTxt.text = myPlayer.GetComponent<PlayerController>()._bearCount.ToString();
 
+        checkPontos();
         SetScoreText();
     }
 
@@ -124,6 +125,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
                 this.GetComponent<KrakenSpawn>().enabled = true;
 
                 j = Random.Range(0, spawnKraken.Length);
+
+
                 //GameObject krakenTemp = PhotonNetwork.Instantiate(myKraken.name, 
                 //    spawnKraken[j].position, spawnKraken[j].rotation, 0) as GameObject;
 
@@ -139,7 +142,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public void SetScoreText()
     {
         redScoreText.text = redScore.ToString();
-        blueScoreText.text = redScore.ToString();
+        blueScoreText.text = blueScore.ToString();
 
 
     }
@@ -156,52 +159,31 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         CheckPlayers();
     }
+
+    public void checkPontos()
+    {
+        if (redScore >= pontosVencedor)
+        {
+            GameOver();
+        }
+        if (blueScore >= pontosVencedor)
+        {
+            GameOver();
+        }
+    }
+
+    public void checkLife()
+    {
+        //foreach (var item in PhotonNetwork.PlayerList)
+        //{
+        //    item.
+        //}
+    }
     
-    public void GameOver() {
+    public void GameOver()
+    {
 
         canvasGameOver.gameObject.SetActive(true);
-
-        var dictionary = new Dictionary<string, int>();
-
-
-        foreach (var item in PhotonNetwork.PlayerList)
-        {
-            /*
-            GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
-
-
-            playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
-            playerScoreTemp.transform.position = Vector3.zero;
-            playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.NickName, item.GetScore().ToString());
-            */
-
-            dictionary.Add(item.NickName, item.GetScore());
-
-        }
-
-        var items = from pair in dictionary
-                    orderby pair.Value descending
-                    select pair;
-
-
-        foreach (var item in items)
-        {
-            GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
-
-
-            playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
-            playerScoreTemp.transform.position = Vector3.zero;
-           // playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.Key, item.Value.ToString());
-        }
-        
-        canvasCountdow.gameObject.SetActive(false);
-
-        //Propriedades da Sala
-        ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable {
-                        {"isGameOver", true }
-                    };
-
-        PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
         isGameOver = true;
 

@@ -43,6 +43,7 @@ public class SpawnBears : MonoBehaviour
         }
     }
 
+
     public void ReFind()
     {
         for (int i = 0; i < spawnPoints.Count; i++)
@@ -53,7 +54,6 @@ public class SpawnBears : MonoBehaviour
         }
         spawnedBears = GameObject.FindGameObjectsWithTag("Bear").ToList();
         canSpwanAgain = false;
-        //}
     }
 
     IEnumerator ExampleCoroutine2()

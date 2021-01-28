@@ -931,12 +931,6 @@ ScriptsOnlyBuild:
     className: BasicController
   - hash:
       serializedVersion: 2
-      Hash: 9c80efe996101ed2f2acdc43e1a95b5b
-    assemblyName: PhotonUnityNetworking.Demos.dll
-    namespaceName: Photon.Pun.Demo.Asteroids
-    className: AsteroidsGameManager
-  - hash:
-      serializedVersion: 2
       Hash: e2fc02a22bd640d0dd0eecf50d2f073c
     assemblyName: Assembly-CSharp.dll
     namespaceName: Photon.Pun.Simple
@@ -1195,7 +1189,7 @@ ScriptsOnlyBuild:
     className: CloudRegionProperty
   - hash:
       serializedVersion: 2
-      Hash: f97ad0ba6d3811f71db4b8da1eddd857
+      Hash: 3831a1b0102195eb8115877b2e33a7dc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1525,7 +1519,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: 107c8d2e96aef981568f1a6b9a831412
+      Hash: 58e4d07a99dc28d714c90bd64e48c80d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControllerGamePlay

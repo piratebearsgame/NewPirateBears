@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     public float TimeToLive = 4f;
     float angle;
 
+    public bool podeMorrer = false;
+
     public int team;
 
     bool canShoot = false;
@@ -54,9 +56,9 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         rend = GetComponent<SpriteRenderer>();
         _colorAmout = 255;
 
-        //team = (int)PhotonNetwork.LocalPlayer.CustomProperties["Team"];
+        team = (int)PhotonNetwork.LocalPlayer.CustomProperties["Team"];
 
-        
+
     }
 
     // Update is called once per frame
@@ -127,10 +129,18 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //print("y: " + transform.position.y);
         if (playerHealthCurrent <= 0)
         {
-            gameManager.GetComponent<GameControllerGamePlay>().GameOver();
+            podeMorrer = true;
         }
 
-        
+        if ((Input.GetKey(KeyCode.R)))
+        {
+            GameControllerGamePlay.redScore++;
+        }
+        if ((Input.GetKey(KeyCode.T)))
+        {
+            print("blue" + GameControllerGamePlay.blueScore);
+            GameControllerGamePlay.blueScore++;
+        }
 
     }
 
@@ -147,22 +157,19 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         }
     }
 
-    //[PunRPC]
+    [PunRPC]
     void OnTriggerEnter2D(Collider2D col)
     {
         //Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
         if (col.gameObject.tag == "Bear")
-        {
+        {          
             photonView.RPC("RPC_PlayerCatch", RpcTarget.All, team);
             _bearCount += 1;
-
-            Destroy(col.gameObject);
-
-            gameManager.GetComponent<SpawnBears>().spawnedBears.Remove(col.gameObject);
+            PhotonNetwork.Destroy(col.gameObject);
+            gameManager.GetComponent<SpawnBears>().spawnedBears.Remove(col.gameObject);            
         }
         if (col.gameObject.tag == "Kraken")
         {
-            
             _bearCount = 0;
         }
     }
@@ -172,11 +179,11 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     {
         if (team == 0)
         {
-            GameControllerGamePlay.redScore++;
+            GameControllerGamePlay.redScore += 1;
         }
         else
         {
-            GameControllerGamePlay.blueScore++;
+            GameControllerGamePlay.blueScore += 1;
         }
     }
 
@@ -196,7 +203,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
             canShoot = true;
             StartCoroutine(ExampleCoroutine());
         }
-        
+
     }
 
     IEnumerator ExampleCoroutine()
@@ -226,7 +233,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         photonView.RPC("TakeDamageNetwork", RpcTarget.AllBuffered, value/*, playerTemp*/);
 
-        
+
         //foreach (var item in PhotonNetwork.PlayerList)
         //{
         //    object playerScoreTempGet;
@@ -276,5 +283,5 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     {
         playerHealthCurrent += value;
         playerHealthFill.fillAmount = playerHealthCurrent / 100f;
-    }    
+    }
 }

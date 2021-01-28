@@ -14665,6 +14665,7 @@ MonoBehaviour:
   canvasGameOver: {fileID: 26777737}
   canvasGameOverFinish: {fileID: 0}
   canvasGameOverPlayScore: {fileID: 0}
+  krakenPanel: {fileID: 1352745466}
   blueScoreText: {fileID: 1401387268}
   redScoreText: {fileID: 663792686}
 --- !u!114 &973734079
@@ -14688,7 +14689,7 @@ MonoBehaviour:
   - {fileID: 1521183245}
   canSpawnKrekanAppear: 0
   appeared: 0
-  krakenInfos: {fileID: 1352745466}
+  canApear: 0
 --- !u!114 &973734080
 MonoBehaviour:
   m_ObjectHideFlags: 0
