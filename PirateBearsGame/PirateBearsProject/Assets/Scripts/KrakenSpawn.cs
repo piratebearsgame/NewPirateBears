@@ -54,7 +54,11 @@ public class KrakenSpawn : MonoBehaviour
 
     IEnumerator Appear()
     {
+<<<<<<< HEAD
         yield return new WaitForSeconds(35);
+=======
+        yield return new WaitForSeconds(15);
+>>>>>>> parent of a9978ce9... Bulld
 
         //int i = Random.Range(0, spawnsKraken.Length);
         

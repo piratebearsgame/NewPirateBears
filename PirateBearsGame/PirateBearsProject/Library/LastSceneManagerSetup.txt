@@ -4,6 +4,33 @@ sceneSetups:
   isActive: 0
   isSubScene: 0
 - path: Assets/Scenes/Main.unity
+<<<<<<< HEAD
+=======
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main.unity
+  isLoaded: 0
+  isActive: 0
+  isSubScene: 0
+- path: Assets/Scenes/Main.unity
+>>>>>>> parent of a9978ce9... Bulld
   isLoaded: 1
   isActive: 1
   isSubScene: 0

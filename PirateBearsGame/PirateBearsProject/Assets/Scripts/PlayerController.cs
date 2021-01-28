@@ -285,23 +285,8 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         if (playerHealthCurrent <= 0)
         {
-            
-            photonView.RPC("RPC_checkTeam", RpcTarget.All, team);
+            //photonView.RPC("IsGameOver", RpcTarget.MasterClient);
             gameManager.GetComponent<GameControllerGamePlay>().GameOverLife();
-
-        }
-    }
-
-    [PunRPC]
-    void RPC_checkTeam(int team)
-    {
-        if (team == 0)
-        {
-            GameControllerGamePlay.checkTeam = 0;
-        }
-        else
-        {
-            GameControllerGamePlay.checkTeam = 1;
         }
     }
 

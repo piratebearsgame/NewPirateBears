@@ -53,8 +53,6 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public Text messageText;
 
-    public static int checkTeam = 0;
-
 
     public static readonly byte RestartGameEventCode;
 
@@ -197,11 +195,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     {
         redScoreText.text = redScore.ToString();
         blueScoreText.text = blueScore.ToString();
-    }
 
-    public void SetWinner(int myTeamAtual)
-    {
-        teamAtual = myTeamAtual;
+
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -285,7 +280,18 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
+<<<<<<< HEAD
         messageText.text = "Em uma luta entre ursinhos piratas não existem vencedores... Sempre há um peixe maior... Ou, bem, um molusco!";
+=======
+        //if (teamAtual == 0)
+        //{
+        //    messageText.text = "Blue Team Wins";
+        //}
+        //if (teamAtual == 1)
+        //{
+        //    messageText.text = "Red Team Wins";
+        //}
+>>>>>>> parent of a9978ce9... Bulld
 
         isGameOver = true;
 
