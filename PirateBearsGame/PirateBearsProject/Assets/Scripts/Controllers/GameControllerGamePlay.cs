@@ -53,6 +53,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public Text messageText;
 
+    public static int checkTeam = 0;
+
 
     public static readonly byte RestartGameEventCode;
 
@@ -119,7 +121,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         
 
-        if (krakenNum >= 2)
+        if (krakenNum >= 20)
         {
             GameOverKraken();
             
@@ -195,8 +197,11 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     {
         redScoreText.text = redScore.ToString();
         blueScoreText.text = blueScore.ToString();
+    }
 
-
+    public void SetWinner(int myTeamAtual)
+    {
+        teamAtual = myTeamAtual;
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -280,14 +285,14 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
-        //if (teamAtual == 0)
-        //{
-        //    messageText.text = "Blue Team Wins";
-        //}
-        //if (teamAtual == 1)
-        //{
-        //    messageText.text = "Red Team Wins";
-        //}
+        if (checkTeam == 0)
+        {
+            messageText.text = "Red Team Wins";
+        }
+        if (checkTeam == 1)
+        {
+            messageText.text = "Blue Team Wins";
+        }
 
         isGameOver = true;
 
