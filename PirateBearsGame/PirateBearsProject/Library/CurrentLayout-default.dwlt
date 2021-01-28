@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -213,13 +213,13 @@ MonoBehaviour:
     height: 519
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 12}
-  m_Selected: 1
-  m_LastSelected: 2
+  m_Selected: 2
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -398,7 +398,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 54e6ffff66e6ffff44e9ffff48e9ffffbaecffffccecffffaaefffffaeefffff7af3ffff8cf3ffff78f6ffff80f6ffffdaf6ffff4afaffff60fbffff865000000a520000
+      m_ExpandedIDs: 22f0ffff34f0ffff16f3ffff1ef3ffff46f3fffff6f4ffff66f7ffff78f7ffff60faffff66faffff52fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -484,9 +484,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 536.203, y: 3.1471207, z: -220.70312}
+    m_Target: {x: 449.34048, y: 228.491, z: -412.65643}
     speed: 2
-    m_Value: {x: 536.203, y: 3.1471207, z: -220.70312}
+    m_Value: {x: 449.34048, y: 228.491, z: -412.65643}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -536,9 +536,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 116.2789
+    m_Target: 311.74512
     speed: 2
-    m_Value: 121.75801
+    m_Value: 311.74512
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -613,8 +613,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 12}
-    m_SelectedIDs: 1e400000
-    m_LastClickedID: 16414
+    m_SelectedIDs: 0e610000
+    m_LastClickedID: 24846
     m_ExpandedIDs: 00000000fc3f0000fe3f000000400000024000000440000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 19386
+  m_LastSelectedObjectID: 130084
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52

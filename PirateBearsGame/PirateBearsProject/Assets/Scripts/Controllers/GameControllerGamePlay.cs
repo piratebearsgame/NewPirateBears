@@ -54,6 +54,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public Text messageText;
 
 
+    public static readonly byte RestartGameEventCode;
+
     private void Awake()
     {
         SetScoreText();
@@ -115,24 +117,19 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         SetScoreText();
         SetKrakenText();
 
-        if (krakenNum >= 5)
+        
+
+        if (krakenNum >= 2)
         {
-            //GameOver();
-            if (teamAtual == 0)
-            {
-                StartCoroutine(DisplayMessage("Blue Team wins"));
-            }
-            if (teamAtual == 1)
-            {
-                StartCoroutine(DisplayMessage("Red Team wins"));
-            }
+            GameOver();
+            
 
         }
 
-        //if (redScore >= 3)
+                //if (redScore >= 3)
         //{
         //    StartCoroutine(DisplayMessage("Red Team wins"));
-            
+
         //}
         //if (blueScore >= 3)
         //{
@@ -145,6 +142,9 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         //    
         //}
     }
+        
+
+    
 
     public void SetKrakenText()
     {
@@ -241,8 +241,18 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public void GameOver()
     {
+        if (teamAtual == 0)
+        {
+            messageText.text = "Blue Team Wins";
+        }
+        if (teamAtual == 1)
+        {
+            messageText.text = "Red Team Wins";
+        }
 
         canvasGameOver.gameObject.SetActive(true);
+
+        
 
         var dictionary = new Dictionary<string, int>();
 
@@ -269,11 +279,11 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         foreach (var item in items)
         {
-            GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
+            //GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
 
 
-            playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
-            playerScoreTemp.transform.position = Vector3.zero;
+            //playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
+            //playerScoreTemp.transform.position = Vector3.zero;
             // playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.Key, item.Value.ToString());
         }
 
@@ -286,14 +296,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
-        if (teamAtual == 0)
-        {
-            StartCoroutine(DisplayMessage("Blue Team wins"));
-        }
-        if (teamAtual == 1)
-        {
-            StartCoroutine(DisplayMessage("Red Team wins"));
-        }
+        
 
         isGameOver = true;
 
