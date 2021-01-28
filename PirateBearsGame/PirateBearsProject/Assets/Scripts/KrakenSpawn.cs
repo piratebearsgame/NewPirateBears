@@ -18,15 +18,11 @@ public class KrakenSpawn : MonoBehaviour
     public GameObject Kraken;
     GameObject krakenTemp;
 
-   
-
     public Transform[] spawnsKraken;
 
     public bool canSpawnKrekanAppear = false;
 
     public bool appeared = false;
-
-    
 
     void Start()
     {
@@ -58,7 +54,7 @@ public class KrakenSpawn : MonoBehaviour
 
     IEnumerator Appear()
     {
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(35);
 
         //int i = Random.Range(0, spawnsKraken.Length);
         

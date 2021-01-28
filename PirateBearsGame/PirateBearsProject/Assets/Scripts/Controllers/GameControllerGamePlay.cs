@@ -121,7 +121,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         
 
-        if (krakenNum >= 20)
+        if (krakenNum >= 2)
         {
             GameOverKraken();
             
@@ -285,14 +285,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
 
-        if (checkTeam == 0)
-        {
-            messageText.text = "Red Team Wins";
-        }
-        if (checkTeam == 1)
-        {
-            messageText.text = "Blue Team Wins";
-        }
+        messageText.text = "Em uma luta entre ursinhos piratas não existem vencedores... Sempre há um peixe maior... Ou, bem, um molusco!";
 
         isGameOver = true;
 
