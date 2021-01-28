@@ -51,6 +51,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public int krakenMax = 10;
     public Text krakenText;
 
+    public Text messageText;
+
 
     private void Awake()
     {
@@ -65,6 +67,8 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     private void Start()
     {
         isGameOver = false;
+
+        StartCoroutine(DisplayMessage("Fight!!"));
 
         int i = Random.Range(0, spawnPlayer.Length);
 
@@ -105,6 +109,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public void Update()
     {
         //pointsTxt.text = myPlayer.GetComponent<PlayerController>()._bearCount.ToString();
+        print("teamAtual: " + teamAtual);
 
         //checkPontos();
         SetScoreText();
@@ -112,9 +117,28 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         if (krakenNum >= 5)
         {
-            GameOver();
+            //GameOver();
+            if (teamAtual == 0)
+            {
+                StartCoroutine(DisplayMessage("Blue Team wins"));
+            }
+            if (teamAtual == 1)
+            {
+                StartCoroutine(DisplayMessage("Red Team wins"));
+            }
+
         }
 
+        //if (redScore >= 3)
+        //{
+        //    StartCoroutine(DisplayMessage("Red Team wins"));
+            
+        //}
+        //if (blueScore >= 3)
+        //{
+        //    StartCoroutine(DisplayMessage("Blue Team wins"));
+
+        //}
 
         //foreach (var item in PhotonNetwork.PlayerList)
         //{
@@ -208,6 +232,13 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         //}
     }
 
+    IEnumerator DisplayMessage(string message)
+    {
+        messageText.text = message;
+        yield return new WaitForSeconds(2);
+        messageText.text = "";
+    }
+
     public void GameOver()
     {
 
@@ -254,6 +285,15 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
                     };
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
+        if (teamAtual == 0)
+        {
+            StartCoroutine(DisplayMessage("Blue Team wins"));
+        }
+        if (teamAtual == 1)
+        {
+            StartCoroutine(DisplayMessage("Red Team wins"));
+        }
 
         isGameOver = true;
 
