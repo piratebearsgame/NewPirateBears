@@ -1519,7 +1519,7 @@ ScriptsOnlyBuild:
     className: LobbyMainPanel
   - hash:
       serializedVersion: 2
-      Hash: 58e4d07a99dc28d714c90bd64e48c80d
+      Hash: 6a35c4ac15b5d83bf5dfcb99eddc98d0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameControllerGamePlay

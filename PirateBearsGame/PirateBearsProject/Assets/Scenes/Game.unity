@@ -1407,6 +1407,7 @@ GameObject:
   - component: {fileID: 54050623}
   - component: {fileID: 54050625}
   - component: {fileID: 54050624}
+  - component: {fileID: 54050626}
   m_Layer: 5
   m_Name: KrakenMaxNum
   m_TagString: Untagged
@@ -1474,6 +1475,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54050622}
   m_CullTransparentMesh: 0
+--- !u!114 &54050626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54050622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 15
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &58653770
 GameObject:
   m_ObjectHideFlags: 0
@@ -7244,6 +7267,7 @@ GameObject:
   - component: {fileID: 529706671}
   - component: {fileID: 529706673}
   - component: {fileID: 529706672}
+  - component: {fileID: 529706674}
   m_Layer: 5
   m_Name: KrakenNum
   m_TagString: Untagged
@@ -7311,6 +7335,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529706670}
   m_CullTransparentMesh: 0
+--- !u!114 &529706674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529706670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 14
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &532853023
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,6 +7368,7 @@ GameObject:
   - component: {fileID: 532853024}
   - component: {fileID: 532853026}
   - component: {fileID: 532853025}
+  - component: {fileID: 532853027}
   m_Layer: 5
   m_Name: KrakenInfo
   m_TagString: Untagged
@@ -7389,6 +7436,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532853023}
   m_CullTransparentMesh: 0
+--- !u!114 &532853027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532853023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 13
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &534556916
 GameObject:
   m_ObjectHideFlags: 0
@@ -14644,6 +14713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointsTxt: {fileID: 0}
   j: 0
+  pontosVencedor: 0
   team: 0
   myPlayer: {fileID: 4982577218634265721, guid: 9d3eacd1bfdb61d49a7b29267d452fc7,
     type: 3}
@@ -14665,9 +14735,11 @@ MonoBehaviour:
   canvasGameOver: {fileID: 26777737}
   canvasGameOverFinish: {fileID: 0}
   canvasGameOverPlayScore: {fileID: 0}
-  krakenPanel: {fileID: 1352745466}
+  krakenInfos: {fileID: 1352745466}
   blueScoreText: {fileID: 1401387268}
   redScoreText: {fileID: 663792686}
+  krakenMax: 10
+  krakenText: {fileID: 529706672}
 --- !u!114 &973734079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14689,7 +14761,6 @@ MonoBehaviour:
   - {fileID: 1521183245}
   canSpawnKrekanAppear: 0
   appeared: 0
-  canApear: 0
 --- !u!114 &973734080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20945,13 +21016,14 @@ GameObject:
   - component: {fileID: 1352745467}
   - component: {fileID: 1352745469}
   - component: {fileID: 1352745468}
+  - component: {fileID: 1352745470}
   m_Layer: 5
   m_Name: KrakenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1352745467
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21011,6 +21083,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352745466}
   m_CullTransparentMesh: 0
+--- !u!114 &1352745470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352745466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  observableSearch: 2
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 12
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1354987446
 GameObject:
   m_ObjectHideFlags: 0

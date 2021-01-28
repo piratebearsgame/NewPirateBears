@@ -127,20 +127,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         //print("x: " + transform.position.x);
         //print("y: " + transform.position.y);
-        if (playerHealthCurrent <= 0)
-        {
-            podeMorrer = true;
-        }
-
-        if ((Input.GetKey(KeyCode.R)))
-        {
-            GameControllerGamePlay.redScore++;
-        }
-        if ((Input.GetKey(KeyCode.T)))
-        {
-            print("blue" + GameControllerGamePlay.blueScore);
-            GameControllerGamePlay.blueScore++;
-        }
+        
 
     }
 
@@ -170,6 +157,10 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         }
         if (col.gameObject.tag == "Kraken")
         {
+            print("Sacrificou");
+
+            photonView.RPC("RPC_KrakenTextReceive", RpcTarget.All, team);
+            photonView.RPC("RPC_BearSacrifice", RpcTarget.All, team);
             _bearCount = 0;
         }
     }
@@ -187,6 +178,38 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         }
     }
 
+    [PunRPC]
+    void RPC_PlayerThrow(int team)
+    {       
+            if (team == 0)
+            {
+                GameControllerGamePlay.redScore -= 1;
+            }
+            else
+            {
+                GameControllerGamePlay.blueScore -= 1;
+            }
+    }
+
+    [PunRPC]
+    void RPC_BearSacrifice(int team)
+    {
+        if (team == 0)
+        {
+            GameControllerGamePlay.redScore = 0;
+        }
+        else
+        {
+            GameControllerGamePlay.blueScore = 0;
+        }
+    }
+
+    [PunRPC]
+    void RPC_KrakenTextReceive(int team)
+    {
+        GameControllerGamePlay.krakenNum += _bearCount;
+        GameControllerGamePlay.teamAtual = team;
+    }
 
 
     [PunRPC]
@@ -196,9 +219,10 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         //{
         //    photonView.RPC("FireBullet", RpcTarget.All);        
         //} 
-        if (Input.GetMouseButtonDown(0) && _bearCount >= 0 && canShoot == false)
+        if (Input.GetMouseButtonDown(0) && _bearCount > 0 && canShoot == false)
         {
             PhotonNetwork.Instantiate(bullet.name, barrelTip.transform.position, barrelTip.transform.rotation, 0);
+            photonView.RPC("RPC_PlayerThrow", RpcTarget.All, team);
             _bearCount -= 1;
             canShoot = true;
             StartCoroutine(ExampleCoroutine());

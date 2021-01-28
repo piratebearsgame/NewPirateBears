@@ -32,7 +32,9 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
     public GameObject canvasGameOver;
     public GameObject canvasGameOverFinish;
-    public GameObject canvasGameOverPlayScore;    
+    public GameObject canvasGameOverPlayScore;
+
+    public GameObject krakenInfos;
 
     public static GameControllerGamePlay instance;
     public static int blueScore = 0;
@@ -43,9 +45,17 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     public Text blueScoreText;
     public Text redScoreText;
 
+    public static int teamAtual = 0;
+
+    public static int krakenNum = 0;
+    public int krakenMax = 10;
+    public Text krakenText;
+
+
     private void Awake()
     {
         SetScoreText();
+        SetKrakenText();
         instance = this;
     }
 
@@ -60,7 +70,7 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
 
         this.GetComponent<SpawnBears>().enabled = false;
         this.GetComponent<KrakenSpawn>().enabled = false;
-
+        krakenInfos.SetActive(true);
 
         GameObject playerTemp = PhotonNetwork.Instantiate(myPlayer.name, spawnPlayer[i].position, spawnPlayer[i].rotation) as GameObject;
 
@@ -96,9 +106,27 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
     {
         //pointsTxt.text = myPlayer.GetComponent<PlayerController>()._bearCount.ToString();
 
-        checkPontos();
+        //checkPontos();
         SetScoreText();
+        SetKrakenText();
+
+        if (krakenNum >= 5)
+        {
+            GameOver();
+        }
+
+
+        //foreach (var item in PhotonNetwork.PlayerList)
+        //{
+        //    
+        //}
     }
+
+    public void SetKrakenText()
+    {
+        krakenText.text = krakenNum.ToString();
+    }
+
 
     void CheckPlayers()
     {
@@ -160,17 +188,17 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         CheckPlayers();
     }
 
-    public void checkPontos()
-    {
-        if (redScore >= pontosVencedor)
-        {
-            GameOver();
-        }
-        if (blueScore >= pontosVencedor)
-        {
-            GameOver();
-        }
-    }
+    //public void checkPontos()
+    //{
+    //    if (redScore >= pontosVencedor)
+    //    {
+    //        GameOver();
+    //    }
+    //    if (blueScore >= pontosVencedor)
+    //    {
+    //        GameOver();
+    //    }
+    //}
 
     public void checkLife()
     {
@@ -179,15 +207,58 @@ public class GameControllerGamePlay : MonoBehaviourPunCallbacks
         //    item.
         //}
     }
-    
+
     public void GameOver()
     {
 
         canvasGameOver.gameObject.SetActive(true);
 
+        var dictionary = new Dictionary<string, int>();
+
+
+        foreach (var item in PhotonNetwork.PlayerList)
+        {
+            /*
+            GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
+
+
+            playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
+            playerScoreTemp.transform.position = Vector3.zero;
+            playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.NickName, item.GetScore().ToString());
+            */
+
+            dictionary.Add(item.NickName, item.GetScore());
+
+        }
+
+        var items = from pair in dictionary
+                    orderby pair.Value descending
+                    select pair;
+
+
+        foreach (var item in items)
+        {
+            GameObject playerScoreTemp = Instantiate(canvasGameOverPlayScore);
+
+
+            playerScoreTemp.transform.SetParent(canvasGameOverFinish.transform);
+            playerScoreTemp.transform.position = Vector3.zero;
+            // playerScoreTemp.GetComponent<PlayerScore>().SetDados(item.Key, item.Value.ToString());
+        }
+
+        canvasCountdow.gameObject.SetActive(false);
+
+        //Propriedades da Sala
+        ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable {
+                        {"isGameOver", true }
+                    };
+
+        PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+
         isGameOver = true;
 
     }
+
 
     public override void OnJoinedRoom()
     {
